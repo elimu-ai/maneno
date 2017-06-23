@@ -1,12 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:gravity="center">
+    android:paddingLeft="@dimen/activity_horizontal_margin">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,24 +13,26 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <Button
-            android:layout_gravity="center"
-            android:id="@+id/listenButton"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/button_custom"
-            android:paddingTop="32dp"
-            android:drawableTop="@drawable/ic_hearing_black_64dp"
-            android:drawableTint="#CCFFFFFF" />
+        <!--<Button-->
+            <!--android:layout_gravity="center"-->
+            <!--android:id="@+id/listenButton"-->
+            <!--android:layout_width="128dp"-->
+            <!--android:layout_height="128dp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:background="@drawable/button_custom"-->
+            <!--android:paddingTop="32dp"-->
+            <!--android:drawableTop="@drawable/ic_hearing_black_64dp"-->
+            <!--android:drawableTint="#CCFFFFFF" />-->
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:animateLayoutChanges="true">
 
             <TextView
+                android:id="@+id/word1TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_horizontal_margin"
@@ -39,6 +40,7 @@
                 android:textSize="128sp" />
 
             <TextView
+                android:id="@+id/word2TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_horizontal_margin"
@@ -46,6 +48,7 @@
                 android:textSize="128sp" />
 
             <TextView
+                android:id="@+id/word3TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_horizontal_margin"
@@ -53,4 +56,15 @@
                 android:textSize="128sp" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <ImageButton android:id="@+id/nextButton"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:visibility="gone"
+        android:scaleType="fitXY"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_arrow_forward_black_24dp"
+        style="?android:attr/buttonBarButtonStyle"
+        android:tint="@color/colorAccent" />
+</RelativeLayout>
