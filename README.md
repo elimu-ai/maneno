@@ -1,4 +1,4 @@
-# egra-familiar-word-reading
+# Familiar Word Reading
 
 Android application for teaching and assessing familiar word reading
 
