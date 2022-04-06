@@ -2,6 +2,10 @@
 
 Android application for learning how to read familiar words.
 
+## Installation
+
+Note: This app depends on the [elimu.ai Content Provider](https://github.com/elimu-ai/content-provider) to be installed.
+
 ---
 
 ## About the elimu.ai Community
