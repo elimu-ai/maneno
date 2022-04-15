@@ -9,11 +9,11 @@ Corresponding [EGRA skill](https://github.com/elimu-ai/model/blob/master/src/mai
 
 ## Screenshots 📸
 
-<img width="640" alt="FAMILIAR_WORD_READING" src="https://user-images.githubusercontent.com/15718174/163384255-9c9c8da3-7a6f-4f46-9c7c-f170530b4afb.png" />
+...
 
 ## Demo Videos 🎥
 
-[![](https://i.ytimg.com/vi/00IRsRc8R0w/hqdefault.jpg)](https://youtu.be/00IRsRc8R0w)
+...
 
 ## Installation
 
@@ -25,5 +25,5 @@ Note: This app depends on the [elimu.ai Content Provider](https://github.com/eli
 
 ![elimu ai-tagline](https://user-images.githubusercontent.com/15718174/54360503-e8e88980-465c-11e9-9792-32b513105cf3.png)
 
- * For a high-level description of the project, see https://github.com/elimu-ai/wiki/blob/master/README.md.
+ * For a high-level description of the project, see https://github.com/elimu-ai/wiki.
  * For project milestones, see https://github.com/elimu-ai/wiki/projects.
