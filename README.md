@@ -1,4 +1,4 @@
-# Familiar Word Reading 🔤
+y# Familiar Word Reading 🔤
 
 Android application for teaching and assessing familiar word reading.
 
@@ -21,7 +21,7 @@ Note: This app depends on the [elimu.ai Content Provider](https://github.com/eli
 
 ---
 
-## About the elimu.ai Community
+## About elimu.ai
 
 ![elimu ai-tagline](https://user-images.githubusercontent.com/15718174/54360503-e8e88980-465c-11e9-9792-32b513105cf3.png)
 
