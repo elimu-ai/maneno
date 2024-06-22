@@ -1,4 +1,4 @@
-y# Familiar Word Reading 🔤
+# Familiar Word Reading 🔤
 
 Android application for teaching and assessing familiar word reading.
 
@@ -9,7 +9,7 @@ Corresponding [EGRA skill](https://github.com/elimu-ai/model/blob/main/src/main/
 
 ## Screenshots 📸
 
-<img width="640" alt="FAMILIAR_WORD_READING" src="https://user-images.githubusercontent.com/15718174/27487363-d3f2cef0-5833-11e7-8c6b-7ee3a802896d.png" />
+<img width="320" alt="FAMILIAR_WORD_READING" src="https://user-images.githubusercontent.com/15718174/27487363-d3f2cef0-5833-11e7-8c6b-7ee3a802896d.png" />
 
 ## Demo Videos 🎥
 
@@ -17,12 +17,27 @@ Corresponding [EGRA skill](https://github.com/elimu-ai/model/blob/main/src/main/
 
 ## Installation
 
-Note: This app depends on the [elimu.ai Content Provider](https://github.com/elimu-ai/content-provider) to be installed.
-
+> [!IMPORTANT]
+> Note: This app depends on the [elimu.ai Content Provider](https://github.com/elimu-ai/content-provider) to be installed.
 
 ---
 
-elimu.ai - Free personalized learning for every child on Earth 🌍🌏🌎
-
-[Website 🌐](https://elimu.ai) &nbsp; [Wiki 📃](https://github.com/elimu-ai/wiki#readme) &nbsp; [Projects 👩🏽‍💻](https://github.com/elimu-ai/wiki/projects) &nbsp; [Milestones 🎯](https://github.com/elimu-ai/wiki/milestones) &nbsp; [Community 👋🏽](https://github.com/elimu-ai/wiki#open-source-community)
-
+<p align="center">
+  <img src="https://github.com/elimu-ai/webapp/blob/main/src/main/webapp/static/img/logo-text-256x78.png" />
+</p>
+<p align="center">
+  elimu.ai - Free open-source learning software for out-of-school children ✨🚀
+</p>
+<p align="center">
+  <a href="https://elimu.ai">Website 🌐</a>
+  &nbsp;•&nbsp;
+  <a href="https://github.com/elimu-ai/wiki#readme">Wiki 📃</a>
+  &nbsp;•&nbsp;
+  <a href="https://github.com/orgs/elimu-ai/projects?query=is%3Aopen">Projects 👩🏽‍💻</a>
+  &nbsp;•&nbsp;
+  <a href="https://github.com/elimu-ai/wiki/milestones">Milestones 🎯</a>
+  &nbsp;•&nbsp;
+  <a href="https://github.com/elimu-ai/wiki#open-source-community">Community 👋🏽</a>
+  &nbsp;•&nbsp;
+  <a href="https://www.drips.network/app/drip-lists/41305178594442616889778610143373288091511468151140966646158126636698">Support 💜</a>
+</p>
