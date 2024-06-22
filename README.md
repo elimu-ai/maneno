@@ -9,7 +9,7 @@ Corresponding [EGRA skill](https://github.com/elimu-ai/model/blob/main/src/main/
 
 ## Screenshots 📸
 
-<img width="320" alt="FAMILIAR_WORD_READING" src="https://user-images.githubusercontent.com/15718174/27487363-d3f2cef0-5833-11e7-8c6b-7ee3a802896d.png" />
+<img width="480" alt="FAMILIAR_WORD_READING" src="https://user-images.githubusercontent.com/15718174/27487363-d3f2cef0-5833-11e7-8c6b-7ee3a802896d.png" />
 
 ## Demo Videos 🎥
 
