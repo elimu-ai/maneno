@@ -1,4 +1,4 @@
-# Familiar Word Reading 🔤
+# Maneno 🔤
 
 Android application for teaching and assessing familiar word reading.
 
