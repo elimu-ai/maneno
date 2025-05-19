@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 
-import ai.elimu.maneno.contentprovider.ContentProvider;
+import ai.elimu.contentprovider.ContentProvider;
 
 public class MainActivity extends AppCompatActivity {
 

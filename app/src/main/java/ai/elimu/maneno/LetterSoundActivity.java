@@ -10,10 +10,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import ai.elimu.contentprovider.ContentProvider;
-import ai.elimu.maneno.contentprovider.model.content.Word;
-import ai.elimu.maneno.contentprovider.model.content.multimedia.Audio;
-import ai.elimu.maneno.contentprovider.util.MultimediaHelper;
-import ai.elimu.maneno.model.enums.content.SpellingConsistency;
+import ai.elimu.contentprovider.model.content.Word;
+import ai.elimu.contentprovider.model.content.multimedia.Audio;
+import ai.elimu.contentprovider.util.MultimediaHelper;
+import ai.elimu.model.enums.content.SpellingConsistency;
 
 import java.io.File;
 import java.util.ArrayList;
