@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import ai.elimu.maneno.contentprovider.ContentProvider;
+import ai.elimu.contentprovider.ContentProvider;
 import ai.elimu.maneno.contentprovider.model.content.Word;
 import ai.elimu.maneno.contentprovider.model.content.multimedia.Audio;
 import ai.elimu.maneno.contentprovider.util.MultimediaHelper;
