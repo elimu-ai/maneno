@@ -1,4 +1,4 @@
-package ai.elimu.maneno.maneno;
+package ai.elimu.maneno;
 
 import org.junit.Test;
 
