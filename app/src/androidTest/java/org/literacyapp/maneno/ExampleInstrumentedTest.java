@@ -1,4 +1,4 @@
-package org.literacyapp.familiar_word_reading;
+package org.literacyapp.maneno;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
