@@ -1,4 +1,4 @@
-package org.literacyapp.familiar_word_reading;
+package ai.elimu.maneno;
 
 import android.Manifest;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import org.literacyapp.contentprovider.ContentProvider;
+import ai.elimu.maneno.contentprovider.ContentProvider;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,20 +1,19 @@
-package org.literacyapp.familiar_word_reading;
+package ai.elimu.maneno;
 
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.literacyapp.contentprovider.ContentProvider;
-import org.literacyapp.contentprovider.model.content.Word;
-import org.literacyapp.contentprovider.model.content.multimedia.Audio;
-import org.literacyapp.contentprovider.util.MultimediaHelper;
-import org.literacyapp.model.enums.content.SpellingConsistency;
+import ai.elimu.maneno.contentprovider.ContentProvider;
+import ai.elimu.maneno.contentprovider.model.content.Word;
+import ai.elimu.maneno.contentprovider.model.content.multimedia.Audio;
+import ai.elimu.maneno.contentprovider.util.MultimediaHelper;
+import ai.elimu.maneno.model.enums.content.SpellingConsistency;
 
 import java.io.File;
 import java.util.ArrayList;
