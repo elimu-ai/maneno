@@ -1,4 +1,4 @@
-package org.literacyapp.familiar_word_reading;
+package ai.elimu.maneno;
 
 import org.junit.Test;
 
