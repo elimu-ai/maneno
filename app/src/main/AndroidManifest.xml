@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- elimu.ai Content Provider (see https://github.com/elimu-ai/content-provider/blob/master/app/src/main/AndroidManifest.xml) -->
+    <uses-permission android:name="${contentProviderApplicationId}.provider.READ" />
+
+    <queries>
+        <provider android:authorities="${contentProviderApplicationId}.provider.word_provider" />
+    </queries>
 
     <application
         android:icon="@mipmap/ic_launcher"
