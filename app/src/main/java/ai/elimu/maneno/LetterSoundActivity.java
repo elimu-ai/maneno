@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import ai.elimu.contentprovider.ContentProvider;
 import ai.elimu.model.v2.gson.content.WordGson;
-import ai.elimu.contentprovider.model.content.multimedia.Audio;
+import ai.elimu.model.v2.gson.content.AudioGson;
 import ai.elimu.contentprovider.util.MultimediaHelper;
 import ai.elimu.model.v2.enums.content.SpellingConsistency;
 
@@ -172,7 +172,7 @@ public class LetterSoundActivity extends AppCompatActivity {
     private void playLetterSound(String letter) {
         Log.i(getClass().getName(), "playLetterSound");
 
-        Audio audio = ContentProvider.getAudio("letter_sound_" + letter);
+        AudioGson audio = ContentProvider.getAudio("letter_sound_" + letter);
         File audioFile = MultimediaHelper.getFile(audio);
         Uri uri = Uri.parse(audioFile.getAbsolutePath());
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
@@ -189,7 +189,7 @@ public class LetterSoundActivity extends AppCompatActivity {
     private void playWord(WordGson word) {
         Log.i(getClass().getName(), "playWord");
 
-        Audio audio = ContentProvider.getAudio(word.getText());
+        AudioGson audio = ContentProvider.getAudio(word.getText());
         File audioFile = MultimediaHelper.getFile(audio);
         Uri uri = Uri.parse(audioFile.getAbsolutePath());
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
