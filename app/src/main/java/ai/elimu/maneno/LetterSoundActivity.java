@@ -63,7 +63,7 @@ public class LetterSoundActivity extends AppCompatActivity {
             Log.i(getClass().getName(), "word.getText(): " + word.getText() + ", word.getPhonetics(): " + word.getPhonetics() + ", word.getSpellingConsistency(): " + word.getSpellingConsistency());
 
             // Skip if corresponding Audio is missing
-            Audio audio = ContentProvider.getAudio(word.getText());
+            AudioGson audio = ContentProvider.getAudio(word.getText());
             if (audio == null) {
                 continue;
             }
