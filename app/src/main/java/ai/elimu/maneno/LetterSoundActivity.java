@@ -1,7 +1,5 @@
 package ai.elimu.maneno;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
@@ -9,19 +7,15 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import ai.elimu.contentprovider.ContentProvider;
+import ai.elimu.content_provider.utils.ContentProviderUtil;
 import ai.elimu.model.v2.gson.content.WordGson;
-import ai.elimu.model.v2.gson.content.AudioGson;
-import ai.elimu.contentprovider.util.MultimediaHelper;
-import ai.elimu.model.v2.enums.content.SpellingConsistency;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LetterSoundActivity extends AppCompatActivity {
 
-    private List<WordGson> words;
+    private List<WordGson> wordsWith3Letters;
 
     private List<WordGson> wordsSeen;
 
@@ -54,30 +48,26 @@ public class LetterSoundActivity extends AppCompatActivity {
             }
         });
 
-        List<WordGson> wordsWithPerfectSpelling = ContentProvider.getAllWords(SpellingConsistency.PERFECT);
-        Log.i(getClass().getName(), "wordsWithPerfectSpelling.size(): " + wordsWithPerfectSpelling.size());
+        List<WordGson> allWords = ContentProviderUtil.INSTANCE.getAllWordGsons(getApplicationContext(), BuildConfig.CONTENT_PROVIDER_APPLICATION_ID);
+        // TODO: dynamically fetch words that only contain the student's unlocked letter-sound correspondences
+        Log.i(getClass().getName(), "allWords.size(): " + allWords.size());
 
-        // TODO: dynamically fetch words that only contain the current student's unlocked letters (& syllables)
-        words = new ArrayList<>();
-        for (WordGson word : wordsWithPerfectSpelling) {
-            Log.i(getClass().getName(), "word.getText(): " + word.getText() + ", word.getPhonetics(): " + word.getPhonetics() + ", word.getSpellingConsistency(): " + word.getSpellingConsistency());
+        // TODO: filter words by SpellingConsistency?
 
-            // Skip if corresponding Audio is missing
-            AudioGson audio = ContentProvider.getAudio(word.getText());
-            if (audio == null) {
-                continue;
-            }
+        wordsWith3Letters = new ArrayList<>();
+        for (WordGson word : allWords) {
+            Log.i(getClass().getName(), "word.getText(): " + word.getText() + ", word.getWordType(): " + word.getWordType());
 
             // TODO: dynamically start with shorter words, then gradually increase length
             if (word.getText().length() == 3) {
-                words.add(word);
+                wordsWith3Letters.add(word);
             }
 
-            if (words.size() == 10) {
+            if (wordsWith3Letters.size() == 10) {
                 break;
             }
         }
-        Log.i(getClass().getName(), "words.size(): " + words.size());
+        Log.i(getClass().getName(), "wordsWith3Letters.size(): " + wordsWith3Letters.size());
     }
 
     @Override
@@ -91,7 +81,7 @@ public class LetterSoundActivity extends AppCompatActivity {
     private void loadNextWord() {
         Log.i(getClass().getName(), "loadNextWord");
 
-        if (wordsSeen.size() == words.size()) {
+        if (wordsSeen.size() == wordsWith3Letters.size()) {
             // TODO: show congratulations page
             finish();
             return;
@@ -102,7 +92,7 @@ public class LetterSoundActivity extends AppCompatActivity {
         word3TextView.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.INVISIBLE);
 
-        final WordGson currentWord = words.get(wordsSeen.size());
+        final WordGson currentWord = wordsWith3Letters.get(wordsSeen.size());
         Log.i(getClass().getName(), "currentWord.getText(): " + currentWord.getText());
 
         word1TextView.postDelayed(new Runnable() {
@@ -172,34 +162,12 @@ public class LetterSoundActivity extends AppCompatActivity {
     private void playLetterSound(String letter) {
         Log.i(getClass().getName(), "playLetterSound");
 
-        AudioGson audio = ContentProvider.getAudio("letter_sound_" + letter);
-        File audioFile = MultimediaHelper.getFile(audio);
-        Uri uri = Uri.parse(audioFile.getAbsolutePath());
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                Log.i(getClass().getName(), "playLetterSound onCompletion");
-                mediaPlayer.release();
-            }
-        });
-        mediaPlayer.start();
+        // TODO
     }
 
     private void playWord(WordGson word) {
         Log.i(getClass().getName(), "playWord");
 
-        AudioGson audio = ContentProvider.getAudio(word.getText());
-        File audioFile = MultimediaHelper.getFile(audio);
-        Uri uri = Uri.parse(audioFile.getAbsolutePath());
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                Log.i(getClass().getName(), "playWord onCompletion");
-                mediaPlayer.release();
-            }
-        });
-        mediaPlayer.start();
+        // TODO
     }
 }
