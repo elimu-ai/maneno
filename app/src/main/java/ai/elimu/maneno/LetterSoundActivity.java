@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import ai.elimu.contentprovider.ContentProvider;
-import ai.elimu.contentprovider.model.content.Word;
+import ai.elimu.model.v2.gson.content.WordGson;
 import ai.elimu.contentprovider.model.content.multimedia.Audio;
 import ai.elimu.contentprovider.util.MultimediaHelper;
 import ai.elimu.model.v2.enums.content.SpellingConsistency;
@@ -21,9 +21,9 @@ import java.util.List;
 
 public class LetterSoundActivity extends AppCompatActivity {
 
-    private List<Word> words;
+    private List<WordGson> words;
 
-    private List<Word> wordsSeen;
+    private List<WordGson> wordsSeen;
 
     private TextView word1TextView;
     private TextView word2TextView;
@@ -54,12 +54,12 @@ public class LetterSoundActivity extends AppCompatActivity {
             }
         });
 
-        List<Word> wordsWithPerfectSpelling = ContentProvider.getAllWords(SpellingConsistency.PERFECT);
+        List<WordGson> wordsWithPerfectSpelling = ContentProvider.getAllWords(SpellingConsistency.PERFECT);
         Log.i(getClass().getName(), "wordsWithPerfectSpelling.size(): " + wordsWithPerfectSpelling.size());
 
         // TODO: dynamically fetch words that only contain the current student's unlocked letters (& syllables)
         words = new ArrayList<>();
-        for (Word word : wordsWithPerfectSpelling) {
+        for (WordGson word : wordsWithPerfectSpelling) {
             Log.i(getClass().getName(), "word.getText(): " + word.getText() + ", word.getPhonetics(): " + word.getPhonetics() + ", word.getSpellingConsistency(): " + word.getSpellingConsistency());
 
             // Skip if corresponding Audio is missing
@@ -102,7 +102,7 @@ public class LetterSoundActivity extends AppCompatActivity {
         word3TextView.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.INVISIBLE);
 
-        final Word currentWord = words.get(wordsSeen.size());
+        final WordGson currentWord = words.get(wordsSeen.size());
         Log.i(getClass().getName(), "currentWord.getText(): " + currentWord.getText());
 
         word1TextView.postDelayed(new Runnable() {
@@ -186,7 +186,7 @@ public class LetterSoundActivity extends AppCompatActivity {
         mediaPlayer.start();
     }
 
-    private void playWord(Word word) {
+    private void playWord(WordGson word) {
         Log.i(getClass().getName(), "playWord");
 
         Audio audio = ContentProvider.getAudio(word.getText());
