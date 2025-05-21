@@ -44,7 +44,7 @@ class LetterSoundActivity : AppCompatActivity() {
         })
 
         val allWords: List<WordGson> =
-            getAllWordGsons(getApplicationContext(), BuildConfig.CONTENT_PROVIDER_APPLICATION_ID)
+            getAllWordGsons(applicationContext, BuildConfig.CONTENT_PROVIDER_APPLICATION_ID)
         // TODO: dynamically fetch words that only contain the student's unlocked letter-sound correspondences
         Log.i(TAG, "allWords.size(): " + allWords.size)
 
@@ -53,11 +53,11 @@ class LetterSoundActivity : AppCompatActivity() {
         for (word in allWords) {
             Log.i(
                 TAG,
-                "word.getText(): " + word.getText() + ", word.getWordType(): " + word.getWordType()
+                "word.getText(): " + word.text + ", word.getWordType(): " + word.wordType
             )
 
             // TODO: dynamically start with shorter words, then gradually increase length
-            if (word.getText().length == 3) {
+            if (word.text.length == 3) {
                 wordsWith3Letters!!.add(word)
             }
 
@@ -84,29 +84,29 @@ class LetterSoundActivity : AppCompatActivity() {
             return
         }
 
-        word1TextView!!.setVisibility(View.INVISIBLE)
-        word2TextView!!.setVisibility(View.INVISIBLE)
-        word3TextView!!.setVisibility(View.INVISIBLE)
+        word1TextView!!.visibility = View.INVISIBLE
+        word2TextView!!.visibility = View.INVISIBLE
+        word3TextView!!.visibility = View.INVISIBLE
         nextButton!!.setVisibility(View.INVISIBLE)
 
         val currentWord = wordsWith3Letters!!.get(wordsSeen!!.size)
-        Log.i(TAG, "currentWord.getText(): " + currentWord.getText())
+        Log.i(TAG, "currentWord.getText(): " + currentWord.text)
 
         word1TextView!!.postDelayed(object : Runnable {
             override fun run() {
-                val letter1 = currentWord.getText().substring(0, 1)
+                val letter1 = currentWord.text.substring(0, 1)
                 Log.i(TAG, "letter1: " + letter1)
                 word1TextView!!.setText(letter1)
 
-                val letter2 = currentWord.getText().substring(1, 2)
+                val letter2 = currentWord.text.substring(1, 2)
                 Log.i(TAG, "letter2: " + letter2)
-                word2TextView!!.setText(letter2)
+                word2TextView!!.text = letter2
 
-                val letter3 = currentWord.getText().substring(2, 3)
+                val letter3 = currentWord.text.substring(2, 3)
                 Log.i(TAG, "letter3: " + letter3)
-                word3TextView!!.setText(letter3)
+                word3TextView!!.text = letter3
 
-                word1TextView!!.setVisibility(View.VISIBLE)
+                word1TextView!!.visibility = View.VISIBLE
                 word1TextView!!.postDelayed(object : Runnable {
                     override fun run() {
                         playLetterSound(letter1)
@@ -114,7 +114,7 @@ class LetterSoundActivity : AppCompatActivity() {
 
                         word2TextView!!.postDelayed(object : Runnable {
                             override fun run() {
-                                word2TextView!!.setVisibility(View.VISIBLE)
+                                word2TextView!!.visibility = View.VISIBLE
                                 word2TextView!!.postDelayed(object : Runnable {
                                     override fun run() {
                                         playLetterSound(letter2)
@@ -122,7 +122,7 @@ class LetterSoundActivity : AppCompatActivity() {
 
                                         word3TextView!!.postDelayed(object : Runnable {
                                             override fun run() {
-                                                word3TextView!!.setVisibility(View.VISIBLE)
+                                                word3TextView!!.visibility = View.VISIBLE
                                                 word3TextView!!.postDelayed(object : Runnable {
                                                     override fun run() {
                                                         playLetterSound(letter3)
