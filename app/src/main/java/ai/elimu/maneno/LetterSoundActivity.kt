@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class LetterSoundActivity : AppCompatActivity() {
+    
+    private val TAG = "LetterSoundActivity"
     private var wordsWith3Letters: MutableList<WordGson>? = null
 
     private var wordsSeen: MutableList<WordGson?>? = null
@@ -21,7 +23,7 @@ class LetterSoundActivity : AppCompatActivity() {
     private var nextButton: ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i(javaClass.getName(), "onCreate")
+        Log.i(TAG, "onCreate")
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_letter_sound)
@@ -35,7 +37,7 @@ class LetterSoundActivity : AppCompatActivity() {
         nextButton = findViewById<View?>(R.id.nextButton) as ImageButton
         nextButton!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
-                Log.i(javaClass.getName(), "nextButton onClick")
+                Log.i(TAG, "nextButton onClick")
 
                 loadNextWord()
             }
@@ -44,13 +46,13 @@ class LetterSoundActivity : AppCompatActivity() {
         val allWords: List<WordGson> =
             getAllWordGsons(getApplicationContext(), BuildConfig.CONTENT_PROVIDER_APPLICATION_ID)
         // TODO: dynamically fetch words that only contain the student's unlocked letter-sound correspondences
-        Log.i(javaClass.getName(), "allWords.size(): " + allWords.size)
+        Log.i(TAG, "allWords.size(): " + allWords.size)
 
         // TODO: filter words by SpellingConsistency?
         wordsWith3Letters = ArrayList<WordGson>()
         for (word in allWords) {
             Log.i(
-                javaClass.getName(),
+                TAG,
                 "word.getText(): " + word.getText() + ", word.getWordType(): " + word.getWordType()
             )
 
@@ -63,18 +65,18 @@ class LetterSoundActivity : AppCompatActivity() {
                 break
             }
         }
-        Log.i(javaClass.getName(), "wordsWith3Letters.size(): " + wordsWith3Letters!!.size)
+        Log.i(TAG, "wordsWith3Letters.size(): " + wordsWith3Letters!!.size)
     }
 
     override fun onStart() {
-        Log.i(javaClass.getName(), "onStart")
+        Log.i(TAG, "onStart")
         super.onStart()
 
         loadNextWord()
     }
 
     private fun loadNextWord() {
-        Log.i(javaClass.getName(), "loadNextWord")
+        Log.i(TAG, "loadNextWord")
 
         if (wordsSeen!!.size == wordsWith3Letters!!.size) {
             // TODO: show congratulations page
@@ -88,20 +90,20 @@ class LetterSoundActivity : AppCompatActivity() {
         nextButton!!.setVisibility(View.INVISIBLE)
 
         val currentWord = wordsWith3Letters!!.get(wordsSeen!!.size)
-        Log.i(javaClass.getName(), "currentWord.getText(): " + currentWord.getText())
+        Log.i(TAG, "currentWord.getText(): " + currentWord.getText())
 
         word1TextView!!.postDelayed(object : Runnable {
             override fun run() {
                 val letter1 = currentWord.getText().substring(0, 1)
-                Log.i(javaClass.getName(), "letter1: " + letter1)
+                Log.i(TAG, "letter1: " + letter1)
                 word1TextView!!.setText(letter1)
 
                 val letter2 = currentWord.getText().substring(1, 2)
-                Log.i(javaClass.getName(), "letter2: " + letter2)
+                Log.i(TAG, "letter2: " + letter2)
                 word2TextView!!.setText(letter2)
 
                 val letter3 = currentWord.getText().substring(2, 3)
-                Log.i(javaClass.getName(), "letter3: " + letter3)
+                Log.i(TAG, "letter3: " + letter3)
                 word3TextView!!.setText(letter3)
 
                 word1TextView!!.setVisibility(View.VISIBLE)
@@ -149,13 +151,13 @@ class LetterSoundActivity : AppCompatActivity() {
     }
 
     private fun playLetterSound(letter: String?) {
-        Log.i(javaClass.getName(), "playLetterSound")
+        Log.i(TAG, "playLetterSound")
 
         // TODO
     }
 
     private fun playWord(word: WordGson?) {
-        Log.i(javaClass.getName(), "playWord")
+        Log.i(TAG, "playWord")
 
         // TODO
     }
