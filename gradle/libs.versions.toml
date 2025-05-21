@@ -7,8 +7,8 @@ coreKtx = "1.16.0"
 
 androidXJunit = "1.2.1"
 androidXEspresso = "3.6.1"
-kotlinGradlePlugin = "1.9.20"
 agp = "8.6.0"
+kotlin = "2.1.21"
 
 [libraries]
 elimu-content-provider = { group = "ai.elimu", name = "content-provider", version.ref = "elimuContentProvider" }
@@ -20,6 +20,6 @@ androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", 
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp"}
-kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin"}
 
 [plugins]
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
