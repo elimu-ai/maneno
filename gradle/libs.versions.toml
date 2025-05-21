@@ -7,7 +7,7 @@ coreKtx = "1.16.0"
 
 androidXJunit = "1.2.1"
 androidXEspresso = "3.6.1"
-agp = "8.6.0"
+agp = "8.6.1"
 kotlin = "2.1.21"
 
 [libraries]
