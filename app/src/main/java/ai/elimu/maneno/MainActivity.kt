@@ -6,14 +6,17 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
+    private val TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i(javaClass.getName(), "onCreate")
+        Log.i(TAG, "onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
     override fun onStart() {
-        Log.i(javaClass.getName(), "onStart")
+        Log.i(TAG, "onStart")
         super.onStart()
 
         val intent = Intent(this, LetterSoundActivity::class.java)
