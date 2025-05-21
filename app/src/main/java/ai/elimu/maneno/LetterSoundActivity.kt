@@ -89,21 +89,21 @@ class LetterSoundActivity : AppCompatActivity() {
         word3TextView!!.visibility = View.INVISIBLE
         nextButton!!.setVisibility(View.INVISIBLE)
 
-        val currentWord = wordsWith3Letters!!.get(wordsSeen!!.size)
+        val currentWord = wordsWith3Letters!![wordsSeen!!.size]
         Log.i(TAG, "currentWord.getText(): " + currentWord.text)
 
         word1TextView!!.postDelayed(object : Runnable {
             override fun run() {
                 val letter1 = currentWord.text.substring(0, 1)
-                Log.i(TAG, "letter1: " + letter1)
-                word1TextView!!.setText(letter1)
+                Log.i(TAG, "letter1: $letter1")
+                word1TextView!!.text = letter1
 
                 val letter2 = currentWord.text.substring(1, 2)
-                Log.i(TAG, "letter2: " + letter2)
+                Log.i(TAG, "letter2: $letter2")
                 word2TextView!!.text = letter2
 
                 val letter3 = currentWord.text.substring(2, 3)
-                Log.i(TAG, "letter3: " + letter3)
+                Log.i(TAG, "letter3: $letter3")
                 word3TextView!!.text = letter3
 
                 word1TextView!!.visibility = View.VISIBLE
