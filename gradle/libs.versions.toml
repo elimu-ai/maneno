@@ -1,0 +1,25 @@
+[versions]
+elimuContentProvider = "1.3.23"
+junit = "4.13.2"
+appCompat = "1.7.0"
+cardview = "1.0.0"
+coreKtx = "1.16.0"
+
+androidXJunit = "1.2.1"
+androidXEspresso = "3.6.1"
+kotlinGradlePlugin = "1.9.20"
+agp = "8.6.0"
+
+[libraries]
+elimu-content-provider = { group = "ai.elimu", name = "content-provider", version.ref = "elimuContentProvider" }
+androidx-app-compat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appCompat" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidXJunit" }
+androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidXEspresso" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp"}
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin"}
+
+[plugins]
