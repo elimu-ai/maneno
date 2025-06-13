@@ -1,7 +1,7 @@
 [versions]
 elimuContentProvider = "1.4.9"
 junit = "4.13.2"
-appCompat = "1.7.0"
+appCompat = "1.7.1"
 cardview = "1.0.0"
 coreKtx = "1.16.0"
 
