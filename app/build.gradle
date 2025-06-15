@@ -1,10 +1,10 @@
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-plugins {
-    alias(libs.plugins.kotlin.android)
-}
 apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'ai.elimu.maneno'
@@ -63,6 +63,8 @@ dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.elimu.content.provider
     implementation libs.elimu.common.utils
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
 }
 
 tasks.named('clean', Delete) {
