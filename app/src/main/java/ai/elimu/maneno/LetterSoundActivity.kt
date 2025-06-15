@@ -1,5 +1,8 @@
 package ai.elimu.maneno
 
+import ai.elimu.common.utils.data.model.tts.QueueMode
+import ai.elimu.common.utils.viewmodel.TextToSpeechViewModel
+import ai.elimu.common.utils.viewmodel.TextToSpeechViewModelImpl
 import ai.elimu.content_provider.utils.ContentProviderUtil.getAllWordGsons
 import ai.elimu.model.v2.gson.content.WordGson
 import android.os.Bundle
@@ -8,7 +11,10 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LetterSoundActivity : AppCompatActivity() {
     
     private val TAG = "LetterSoundActivity"
@@ -21,10 +27,13 @@ class LetterSoundActivity : AppCompatActivity() {
     private var word3TextView: TextView? = null
 
     private var nextButton: ImageButton? = null
+    private lateinit var ttsViewModel: TextToSpeechViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(TAG, "onCreate")
         super.onCreate(savedInstanceState)
+
+        ttsViewModel = ViewModelProvider(this)[TextToSpeechViewModelImpl::class.java]
 
         setContentView(R.layout.activity_letter_sound)
 
@@ -158,7 +167,7 @@ class LetterSoundActivity : AppCompatActivity() {
 
     private fun playWord(word: WordGson?) {
         Log.i(TAG, "playWord")
-
-        // TODO
+        val spokenText = word?.text ?: return
+        ttsViewModel.speak(text = spokenText, queueMode = QueueMode.FLUSH, utteranceId = word.id.toString())
     }
 }
