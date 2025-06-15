@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.UUID
 
 @AndroidEntryPoint
 class LetterSoundActivity : AppCompatActivity() {
@@ -168,6 +169,7 @@ class LetterSoundActivity : AppCompatActivity() {
     private fun playWord(word: WordGson?) {
         Log.i(TAG, "playWord")
         val spokenText = word?.text ?: return
-        ttsViewModel.speak(text = spokenText, queueMode = QueueMode.FLUSH, utteranceId = word.id.toString())
+        val utteranceId = word.id?.toString() ?: UUID.randomUUID().toString()
+        ttsViewModel.speak(text = spokenText, queueMode = QueueMode.FLUSH, utteranceId = utteranceId)
     }
 }
