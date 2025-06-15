@@ -161,9 +161,10 @@ class LetterSoundActivity : AppCompatActivity() {
     }
 
     private fun playLetterSound(letter: String?) {
-        Log.i(TAG, "playLetterSound")
-
-        // TODO
+        Log.i(TAG, "playLetterSound: $letter")
+        letter ?: return
+        ttsViewModel.speak(text = letter,
+            queueMode = QueueMode.FLUSH, utteranceId = UUID.randomUUID().toString())
     }
 
     private fun playWord(word: WordGson?) {
