@@ -1,5 +1,6 @@
 package ai.elimu.maneno
 
+import ai.elimu.analytics.utils.LearningEventUtil
 import ai.elimu.common.utils.data.model.tts.QueueMode
 import ai.elimu.common.utils.viewmodel.TextToSpeechViewModel
 import ai.elimu.common.utils.viewmodel.TextToSpeechViewModelImpl
@@ -168,9 +169,14 @@ class LetterSoundActivity : AppCompatActivity() {
     }
 
     private fun playWord(word: WordGson?) {
-        Log.i(TAG, "playWord")
+        Log.i(TAG, "playWord: $word")
         val spokenText = word?.text ?: return
         val utteranceId = word.id?.toString() ?: UUID.randomUUID().toString()
         ttsViewModel.speak(text = spokenText, queueMode = QueueMode.FLUSH, utteranceId = utteranceId)
+
+        LearningEventUtil.reportWordLearningEvent(
+            wordGson = word,
+            context = applicationContext,
+            analyticsApplicationId = BuildConfig.ANALYTICS_APPLICATION_ID)
     }
 }
