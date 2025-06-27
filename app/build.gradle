@@ -62,7 +62,6 @@ dependencies {
     implementation libs.androidx.cardview
     implementation libs.androidx.core.ktx
     implementation libs.elimu.content.provider
-    implementation libs.elimu.common.utils
     implementation libs.hilt.android
     kapt libs.hilt.compiler
 }
