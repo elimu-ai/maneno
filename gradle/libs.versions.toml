@@ -1,6 +1,6 @@
 [versions]
 elimuContentProvider = "1.4.23"
-elimuCommonUtils = "1.0.13"
+elimuCommonUtils = "1.0.14"
 junit = "4.13.2"
 appCompat = "1.7.1"
 cardview = "1.0.0"
