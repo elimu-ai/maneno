@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
+import org.json.JSONObject
 import java.util.UUID
 
 @AndroidEntryPoint
@@ -176,7 +177,11 @@ class LetterSoundActivity : AppCompatActivity() {
 
         LearningEventUtil.reportWordLearningEvent(
             wordGson = word,
+            additionalData = JSONObject().apply {
+                put("spokenText", spokenText)
+            },
             context = applicationContext,
-            analyticsApplicationId = BuildConfig.ANALYTICS_APPLICATION_ID)
+            analyticsApplicationId = BuildConfig.ANALYTICS_APPLICATION_ID
+        )
     }
 }
