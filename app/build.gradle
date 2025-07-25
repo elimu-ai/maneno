@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdk= 26
         targetSdk = 35
-        versionCode 2000024
-        versionName "2.0.24"
+        versionCode 2000025
+        versionName "2.0.25-SNAPSHOT"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
