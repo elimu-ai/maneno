@@ -15,7 +15,7 @@ android {
         minSdk= 26
         targetSdk = 35
         versionCode 2000026
-        versionName "2.0.26-SNAPSHOT"
+        versionName "2.0.26"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
