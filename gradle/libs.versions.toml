@@ -1,5 +1,5 @@
 [versions]
-elimuContentProvider = "1.4.53"
+elimuContentProvider = "1.4.54"
 junit = "4.13.2"
 appCompat = "1.7.1"
 cardview = "1.0.0"
