@@ -8,14 +8,13 @@ apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'ai.elimu.maneno'
-
-    compileSdk = 35
+    compileSdk 36
 
     defaultConfig {
-        minSdk= 26
-        targetSdk = 35
-        versionCode 2000032
-        versionName "2.0.32-SNAPSHOT"
+        minSdkVersion 29
+        targetSdkVersion 36
+        versionCode 2000046
+        versionName "2.0.46-SNAPSHOT"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
