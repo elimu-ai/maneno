@@ -101,15 +101,15 @@ class LetterSoundActivity : AppCompatActivity() {
             override fun run() {
                 val letter1 = currentWord.text.substring(0, 1)
                 Log.i(TAG, "letter1: $letter1")
-                letter1TextView!!.text = letter1
+                letter1TextView!!.text = " ${letter1}"
 
                 val letter2 = currentWord.text.substring(1, 2)
                 Log.i(TAG, "letter2: $letter2")
-                letter2TextView!!.text = letter2
+                letter2TextView!!.text = " ${letter2}"
 
                 val letter3 = currentWord.text.substring(2, 3)
                 Log.i(TAG, "letter3: $letter3")
-                letter3TextView!!.text = letter3
+                letter3TextView!!.text = " ${letter3}"
 
                 letter1TextView!!.visibility = View.VISIBLE
                 letter1TextView!!.postDelayed(object : Runnable {
