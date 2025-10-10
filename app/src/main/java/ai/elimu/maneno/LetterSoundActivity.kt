@@ -70,7 +70,7 @@ class LetterSoundActivity : AppCompatActivity() {
                 break
             }
         }
-        Log.i(TAG, "wordsWith3Letters.size: " + wordsWith3LetterSounds!!.size)
+        Log.i(TAG, "wordsWith3LetterSounds.size: " + wordsWith3LetterSounds!!.size)
     }
 
     override fun onStart() {
