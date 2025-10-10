@@ -21,7 +21,7 @@ import java.util.UUID
 class LetterSoundActivity : AppCompatActivity() {
     
     private val TAG = "LetterSoundActivity"
-    private var wordsWith3Letters: MutableList<WordGson>? = null
+    private var wordsWith3LetterSounds: MutableList<WordGson>? = null
 
     private var wordsSeen: MutableList<WordGson?>? = null
 
@@ -56,21 +56,21 @@ class LetterSoundActivity : AppCompatActivity() {
         })
 
         val allWords: List<WordGson> = getAllWordGsons(applicationContext, BuildConfig.CONTENT_PROVIDER_APPLICATION_ID)
-        Log.i(TAG, "allWords.size(): " + allWords.size)
+        Log.i(TAG, "allWords.size: " + allWords.size)
 
-        wordsWith3Letters = ArrayList<WordGson>()
+        wordsWith3LetterSounds = ArrayList<WordGson>()
         for (word in allWords) {
-            Log.i(TAG, "word.text: " + word.text + ", word.wordType: " + word.wordType)
+            Log.i(TAG, "word: " + word + ", word.wordType: " + word.wordType)
 
-            if (word.text.length == 3) {
-                wordsWith3Letters!!.add(word)
+            if (word.letterSounds.size == 3) {
+                wordsWith3LetterSounds!!.add(word)
             }
 
-            if (wordsWith3Letters!!.size == 10) {
+            if (wordsWith3LetterSounds!!.size == 10) {
                 break
             }
         }
-        Log.i(TAG, "wordsWith3Letters.size(): " + wordsWith3Letters!!.size)
+        Log.i(TAG, "wordsWith3Letters.size: " + wordsWith3LetterSounds!!.size)
     }
 
     override fun onStart() {
@@ -83,7 +83,7 @@ class LetterSoundActivity : AppCompatActivity() {
     private fun loadNextWord() {
         Log.i(TAG, "loadNextWord")
 
-        if (wordsSeen!!.size == wordsWith3Letters!!.size) {
+        if (wordsSeen!!.size == wordsWith3LetterSounds!!.size) {
             // TODO: show congratulations page
             finish()
             return
@@ -94,8 +94,8 @@ class LetterSoundActivity : AppCompatActivity() {
         letter3TextView!!.visibility = View.INVISIBLE
         nextButton!!.setVisibility(View.INVISIBLE)
 
-        val currentWord = wordsWith3Letters!![wordsSeen!!.size]
-        Log.i(TAG, "currentWord.getText(): " + currentWord.text)
+        val currentWord = wordsWith3LetterSounds!![wordsSeen!!.size]
+        Log.i(TAG, "currentWord: " + currentWord)
 
         letter1TextView!!.postDelayed(object : Runnable {
             override fun run() {
