@@ -62,7 +62,7 @@ class LetterSoundActivity : AppCompatActivity() {
         for (word in allWords) {
             Log.i(TAG, "word: " + word + ", word.wordType: " + word.wordType)
 
-            if (word.letterSounds.size == 3) {
+            if (word.text.length == 3) {
                 wordsWith3LetterSounds!!.add(word)
             }
 
