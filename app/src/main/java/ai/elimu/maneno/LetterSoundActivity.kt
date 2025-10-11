@@ -5,6 +5,8 @@ import ai.elimu.common.utils.data.model.tts.QueueMode
 import ai.elimu.common.utils.viewmodel.TextToSpeechViewModel
 import ai.elimu.common.utils.viewmodel.TextToSpeechViewModelImpl
 import ai.elimu.content_provider.utils.ContentProviderUtil.getAllWordGsons
+import ai.elimu.model.v2.gson.content.LetterGson
+import ai.elimu.model.v2.gson.content.LetterSoundGson
 import ai.elimu.model.v2.gson.content.WordGson
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 import java.util.UUID
+import java.util.stream.Collectors
 
 @AndroidEntryPoint
 class LetterSoundActivity : AppCompatActivity() {
@@ -25,9 +28,9 @@ class LetterSoundActivity : AppCompatActivity() {
 
     private var wordsSeen: MutableList<WordGson?>? = null
 
-    private var letter1TextView: TextView? = null
-    private var letter2TextView: TextView? = null
-    private var letter3TextView: TextView? = null
+    private var letterSound1TextView: TextView? = null
+    private var letterSound2TextView: TextView? = null
+    private var letterSound3TextView: TextView? = null
 
     private var nextButton: ImageButton? = null
     private lateinit var ttsViewModel: TextToSpeechViewModel
@@ -42,9 +45,9 @@ class LetterSoundActivity : AppCompatActivity() {
 
         wordsSeen = ArrayList<WordGson?>()
 
-        letter1TextView = findViewById<View?>(R.id.letter1TextView) as TextView
-        letter2TextView = findViewById<View?>(R.id.letter2TextView) as TextView
-        letter3TextView = findViewById<View?>(R.id.letter3TextView) as TextView
+        letterSound1TextView = findViewById<View?>(R.id.letterSound1TextView) as TextView
+        letterSound2TextView = findViewById<View?>(R.id.letterSound2TextView) as TextView
+        letterSound3TextView = findViewById<View?>(R.id.letterSound3TextView) as TextView
 
         nextButton = findViewById<View?>(R.id.nextButton) as ImageButton
         nextButton!!.setOnClickListener(object : View.OnClickListener {
@@ -62,7 +65,7 @@ class LetterSoundActivity : AppCompatActivity() {
         for (word in allWords) {
             Log.i(TAG, "word: " + word + ", word.wordType: " + word.wordType)
 
-            if (word.text.length == 3) {
+            if (word.letterSounds.size == 3) {
                 wordsWith3LetterSounds!!.add(word)
             }
 
@@ -89,51 +92,57 @@ class LetterSoundActivity : AppCompatActivity() {
             return
         }
 
-        letter1TextView!!.visibility = View.INVISIBLE
-        letter2TextView!!.visibility = View.INVISIBLE
-        letter3TextView!!.visibility = View.INVISIBLE
+        letterSound1TextView!!.visibility = View.INVISIBLE
+        letterSound2TextView!!.visibility = View.INVISIBLE
+        letterSound3TextView!!.visibility = View.INVISIBLE
         nextButton!!.setVisibility(View.INVISIBLE)
 
         val currentWord = wordsWith3LetterSounds!![wordsSeen!!.size]
         Log.i(TAG, "currentWord: " + currentWord)
 
-        letter1TextView!!.postDelayed(object : Runnable {
+        letterSound1TextView!!.postDelayed(object : Runnable {
             override fun run() {
-                val letter1 = currentWord.text.substring(0, 1)
-                Log.i(TAG, "letter1: $letter1")
-                letter1TextView!!.text = " ${letter1}"
+                val letterSound1 = currentWord.letterSounds.get(0)
+                Log.i(TAG, "letterSound1: $letterSound1")
+                val letterSound1Letters: String = letterSound1.letters.stream().map { obj: LetterGson -> obj.text }.collect(Collectors.joining())
+                Log.i(this::class.simpleName, "letterSound1Letters: ${letterSound1Letters}")
+                letterSound1TextView!!.text = " ${letterSound1Letters}"
 
-                val letter2 = currentWord.text.substring(1, 2)
-                Log.i(TAG, "letter2: $letter2")
-                letter2TextView!!.text = " ${letter2}"
+                val letterSound2 = currentWord.letterSounds.get(1)
+                Log.i(TAG, "letterSound2: $letterSound2")
+                val letterSound2Letters: String = letterSound2.letters.stream().map { obj: LetterGson -> obj.text }.collect(Collectors.joining())
+                Log.i(this::class.simpleName, "letterSound2Letters: ${letterSound2Letters}")
+                letterSound2TextView!!.text = " ${letterSound2Letters}"
 
-                val letter3 = currentWord.text.substring(2, 3)
-                Log.i(TAG, "letter3: $letter3")
-                letter3TextView!!.text = " ${letter3}"
+                val letterSound3 = currentWord.letterSounds.get(2)
+                Log.i(TAG, "letterSound3: $letterSound3")
+                val letterSound3Letters: String = letterSound3.letters.stream().map { obj: LetterGson -> obj.text }.collect(Collectors.joining())
+                Log.i(this::class.simpleName, "letterSound3Letters: ${letterSound3Letters}")
+                letterSound3TextView!!.text = " ${letterSound3Letters}"
 
-                letter1TextView!!.visibility = View.VISIBLE
-                letter1TextView!!.postDelayed(object : Runnable {
+                letterSound1TextView!!.visibility = View.VISIBLE
+                letterSound1TextView!!.postDelayed(object : Runnable {
                     override fun run() {
-                        playLetterSound(letter1)
+                        playLetterNames(letterSound1)
 
 
-                        letter2TextView!!.postDelayed(object : Runnable {
+                        letterSound2TextView!!.postDelayed(object : Runnable {
                             override fun run() {
-                                letter2TextView!!.visibility = View.VISIBLE
-                                letter2TextView!!.postDelayed(object : Runnable {
+                                letterSound2TextView!!.visibility = View.VISIBLE
+                                letterSound2TextView!!.postDelayed(object : Runnable {
                                     override fun run() {
-                                        playLetterSound(letter2)
+                                        playLetterNames(letterSound2)
 
 
-                                        letter3TextView!!.postDelayed(object : Runnable {
+                                        letterSound3TextView!!.postDelayed(object : Runnable {
                                             override fun run() {
-                                                letter3TextView!!.visibility = View.VISIBLE
-                                                letter3TextView!!.postDelayed(object : Runnable {
+                                                letterSound3TextView!!.visibility = View.VISIBLE
+                                                letterSound3TextView!!.postDelayed(object : Runnable {
                                                     override fun run() {
-                                                        playLetterSound(letter3)
+                                                        playLetterNames(letterSound3)
 
 
-                                                        letter3TextView!!.postDelayed(object :
+                                                        letterSound3TextView!!.postDelayed(object :
                                                             Runnable {
                                                             override fun run() {
                                                                 playWord(currentWord)
@@ -155,11 +164,21 @@ class LetterSoundActivity : AppCompatActivity() {
         }, 1000)
     }
 
-    private fun playLetterSound(letter: String?) {
-        Log.i(TAG, "playLetterSound: $letter")
-        letter ?: return
-        ttsViewModel.speak(text = letter,
-            queueMode = QueueMode.FLUSH, utteranceId = UUID.randomUUID().toString())
+    /**
+     * Speaks the names of the letter(s), e.g. /nɔɔ-nǔu/ for "น".
+     *
+     * TODO: Skip letters that are diacritics.
+     *
+     * TODO: Once the TTS engine gets better support for speaking IPA symbols, switch from playing
+     * the letter names to playing the actual sounds.
+     */
+    private fun playLetterNames(letterSound: LetterSoundGson) {
+        Log.i(TAG, "playLetterNames")
+        Log.i(this::class.simpleName, "letterSound.id: ${letterSound.id}")
+        letterSound ?: return
+        val letterSoundLetters: String = letterSound.letters.stream().map { obj: LetterGson -> obj.text }.collect(Collectors.joining())
+        Log.i(this::class.simpleName, "letterSoundLetters: ${letterSoundLetters}")
+        ttsViewModel.speak(text = letterSoundLetters, queueMode = QueueMode.FLUSH, utteranceId = UUID.randomUUID().toString())
     }
 
     private fun playWord(word: WordGson?) {
