@@ -21,13 +21,13 @@ import java.util.UUID
 class LetterSoundActivity : AppCompatActivity() {
     
     private val TAG = "LetterSoundActivity"
-    private var wordsWith3Letters: MutableList<WordGson>? = null
+    private var wordsWith3LetterSounds: MutableList<WordGson>? = null
 
     private var wordsSeen: MutableList<WordGson?>? = null
 
-    private var word1TextView: TextView? = null
-    private var word2TextView: TextView? = null
-    private var word3TextView: TextView? = null
+    private var letter1TextView: TextView? = null
+    private var letter2TextView: TextView? = null
+    private var letter3TextView: TextView? = null
 
     private var nextButton: ImageButton? = null
     private lateinit var ttsViewModel: TextToSpeechViewModel
@@ -42,9 +42,9 @@ class LetterSoundActivity : AppCompatActivity() {
 
         wordsSeen = ArrayList<WordGson?>()
 
-        word1TextView = findViewById<View?>(R.id.word1TextView) as TextView
-        word2TextView = findViewById<View?>(R.id.word2TextView) as TextView
-        word3TextView = findViewById<View?>(R.id.word3TextView) as TextView
+        letter1TextView = findViewById<View?>(R.id.letter1TextView) as TextView
+        letter2TextView = findViewById<View?>(R.id.letter2TextView) as TextView
+        letter3TextView = findViewById<View?>(R.id.letter3TextView) as TextView
 
         nextButton = findViewById<View?>(R.id.nextButton) as ImageButton
         nextButton!!.setOnClickListener(object : View.OnClickListener {
@@ -55,29 +55,22 @@ class LetterSoundActivity : AppCompatActivity() {
             }
         })
 
-        val allWords: List<WordGson> =
-            getAllWordGsons(applicationContext, BuildConfig.CONTENT_PROVIDER_APPLICATION_ID)
-        // TODO: dynamically fetch words that only contain the student's unlocked letter-sound correspondences
-        Log.i(TAG, "allWords.size(): " + allWords.size)
+        val allWords: List<WordGson> = getAllWordGsons(applicationContext, BuildConfig.CONTENT_PROVIDER_APPLICATION_ID)
+        Log.i(TAG, "allWords.size: " + allWords.size)
 
-        // TODO: filter words by SpellingConsistency?
-        wordsWith3Letters = ArrayList<WordGson>()
+        wordsWith3LetterSounds = ArrayList<WordGson>()
         for (word in allWords) {
-            Log.i(
-                TAG,
-                "word.getText(): " + word.text + ", word.getWordType(): " + word.wordType
-            )
+            Log.i(TAG, "word: " + word + ", word.wordType: " + word.wordType)
 
-            // TODO: dynamically start with shorter words, then gradually increase length
-            if (word.text.length == 3) {
-                wordsWith3Letters!!.add(word)
+            if (word.letterSounds.size == 3) {
+                wordsWith3LetterSounds!!.add(word)
             }
 
-            if (wordsWith3Letters!!.size == 10) {
+            if (wordsWith3LetterSounds!!.size == 10) {
                 break
             }
         }
-        Log.i(TAG, "wordsWith3Letters.size(): " + wordsWith3Letters!!.size)
+        Log.i(TAG, "wordsWith3LetterSounds.size: " + wordsWith3LetterSounds!!.size)
     }
 
     override fun onStart() {
@@ -90,57 +83,57 @@ class LetterSoundActivity : AppCompatActivity() {
     private fun loadNextWord() {
         Log.i(TAG, "loadNextWord")
 
-        if (wordsSeen!!.size == wordsWith3Letters!!.size) {
+        if (wordsSeen!!.size == wordsWith3LetterSounds!!.size) {
             // TODO: show congratulations page
             finish()
             return
         }
 
-        word1TextView!!.visibility = View.INVISIBLE
-        word2TextView!!.visibility = View.INVISIBLE
-        word3TextView!!.visibility = View.INVISIBLE
+        letter1TextView!!.visibility = View.INVISIBLE
+        letter2TextView!!.visibility = View.INVISIBLE
+        letter3TextView!!.visibility = View.INVISIBLE
         nextButton!!.setVisibility(View.INVISIBLE)
 
-        val currentWord = wordsWith3Letters!![wordsSeen!!.size]
-        Log.i(TAG, "currentWord.getText(): " + currentWord.text)
+        val currentWord = wordsWith3LetterSounds!![wordsSeen!!.size]
+        Log.i(TAG, "currentWord: " + currentWord)
 
-        word1TextView!!.postDelayed(object : Runnable {
+        letter1TextView!!.postDelayed(object : Runnable {
             override fun run() {
                 val letter1 = currentWord.text.substring(0, 1)
                 Log.i(TAG, "letter1: $letter1")
-                word1TextView!!.text = letter1
+                letter1TextView!!.text = " ${letter1}"
 
                 val letter2 = currentWord.text.substring(1, 2)
                 Log.i(TAG, "letter2: $letter2")
-                word2TextView!!.text = letter2
+                letter2TextView!!.text = " ${letter2}"
 
                 val letter3 = currentWord.text.substring(2, 3)
                 Log.i(TAG, "letter3: $letter3")
-                word3TextView!!.text = letter3
+                letter3TextView!!.text = " ${letter3}"
 
-                word1TextView!!.visibility = View.VISIBLE
-                word1TextView!!.postDelayed(object : Runnable {
+                letter1TextView!!.visibility = View.VISIBLE
+                letter1TextView!!.postDelayed(object : Runnable {
                     override fun run() {
                         playLetterSound(letter1)
 
 
-                        word2TextView!!.postDelayed(object : Runnable {
+                        letter2TextView!!.postDelayed(object : Runnable {
                             override fun run() {
-                                word2TextView!!.visibility = View.VISIBLE
-                                word2TextView!!.postDelayed(object : Runnable {
+                                letter2TextView!!.visibility = View.VISIBLE
+                                letter2TextView!!.postDelayed(object : Runnable {
                                     override fun run() {
                                         playLetterSound(letter2)
 
 
-                                        word3TextView!!.postDelayed(object : Runnable {
+                                        letter3TextView!!.postDelayed(object : Runnable {
                                             override fun run() {
-                                                word3TextView!!.visibility = View.VISIBLE
-                                                word3TextView!!.postDelayed(object : Runnable {
+                                                letter3TextView!!.visibility = View.VISIBLE
+                                                letter3TextView!!.postDelayed(object : Runnable {
                                                     override fun run() {
                                                         playLetterSound(letter3)
 
 
-                                                        word3TextView!!.postDelayed(object :
+                                                        letter3TextView!!.postDelayed(object :
                                                             Runnable {
                                                             override fun run() {
                                                                 playWord(currentWord)
