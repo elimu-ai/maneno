@@ -175,7 +175,6 @@ class LetterSoundActivity : AppCompatActivity() {
     private fun playLetterNames(letterSound: LetterSoundGson) {
         Log.i(TAG, "playLetterNames")
         Log.i(this::class.simpleName, "letterSound.id: ${letterSound.id}")
-        letterSound ?: return
         val letterSoundLetters: String = letterSound.letters.stream().map { obj: LetterGson -> obj.text }.collect(Collectors.joining())
         Log.i(this::class.simpleName, "letterSoundLetters: ${letterSoundLetters}")
         ttsViewModel.speak(text = letterSoundLetters, queueMode = QueueMode.FLUSH, utteranceId = UUID.randomUUID().toString())
