@@ -62,7 +62,7 @@ dependencies {
     implementation libs.androidx.app.compat
     implementation libs.androidx.cardview
     implementation libs.androidx.core.ktx
-    implementation("androidx.compose.runtime:runtime:1.9.4")
+    implementation libs.androidx.compose.runtime
     implementation libs.elimu.content.provider
     implementation libs.hilt.android
     kapt libs.hilt.compiler
