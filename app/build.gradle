@@ -4,6 +4,7 @@ import java.util.regex.Pattern
 apply plugin: 'com.android.application'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -42,6 +43,7 @@ android {
 
     buildFeatures {
         buildConfig true
+        compose true // Enables Compose functionality in Android Studio
     }
 
     lintOptions {
@@ -60,6 +62,7 @@ dependencies {
     implementation libs.androidx.app.compat
     implementation libs.androidx.cardview
     implementation libs.androidx.core.ktx
+    implementation("androidx.compose.runtime:runtime:1.9.4")
     implementation libs.elimu.content.provider
     implementation libs.hilt.android
     kapt libs.hilt.compiler
