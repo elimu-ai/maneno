@@ -64,7 +64,6 @@ dependencies {
     implementation libs.androidx.core.ktx
 
     // Jetpack Compose
-    implementation libs.androidx.compose.runtime // https://developer.android.com/jetpack/androidx/releases/compose-runtime
     implementation libs.androidx.compose.ui // https://developer.android.com/jetpack/androidx/releases/compose-ui
 
     implementation libs.elimu.content.provider // https://jitpack.io/#ai.elimu/content-provider
