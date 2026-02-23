@@ -6,7 +6,7 @@ cardview = "1.0.0"
 coreKtx = "1.16.0"
 
 # Jetpack Compose
-composeUi = "1.9.4"
+composeUi = "1.10.3"
 
 androidXJunit = "1.3.0"
 androidXEspresso = "3.7.0"
