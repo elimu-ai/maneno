@@ -3,7 +3,7 @@ elimuContentProvider = "1.4.68"
 junit = "4.13.2"
 appCompat = "1.7.1"
 cardview = "1.0.0"
-coreKtx = "1.16.0"
+coreKtx = "1.18.0"
 
 # Jetpack Compose
 composeUi = "1.9.4"
