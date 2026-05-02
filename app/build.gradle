@@ -56,9 +56,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation libs.androidx.espresso
-    androidTestImplementation libs.androidx.junit
-    testImplementation libs.junit
+
+    implementation libs.elimu.content.provider // https://jitpack.io/#ai.elimu/content-provider
+
     implementation libs.androidx.app.compat
     implementation libs.androidx.cardview
     implementation libs.androidx.core.ktx
@@ -66,9 +66,12 @@ dependencies {
     // Jetpack Compose
     implementation libs.androidx.compose.ui // https://developer.android.com/jetpack/androidx/releases/compose-ui
 
-    implementation libs.elimu.content.provider // https://jitpack.io/#ai.elimu/content-provider
     implementation libs.hilt.android
     kapt libs.hilt.compiler
+
+    androidTestImplementation libs.androidx.espresso
+    androidTestImplementation libs.androidx.junit
+    testImplementation libs.junit
 }
 
 tasks.named('clean', Delete) {
